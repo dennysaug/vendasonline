@@ -24,6 +24,8 @@ class CreateProdutosTable extends Migration
             $table->tinyInteger('ativo')->default(1);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('categoria_id')->references('id')->on('categorias');
         });
     }
 
@@ -34,6 +36,8 @@ class CreateProdutosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('produtos');
+        Schema::drop('produtos', function(Blueprint $table){
+            $table->dropColumn('categoria_id');
+        });
     }
 }

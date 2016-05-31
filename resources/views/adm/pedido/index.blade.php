@@ -1,5 +1,9 @@
 @extends('layout.adm')
+@section('total', 'Total de pedidos encontrados ' . $pedidos->count())
 @section('conteudo')
+
+    @include('includes.filtro')
+
     <table class="table table-bordered table-hover">
         <thead>
         <tr>
@@ -29,11 +33,21 @@
                             </ul>
                         </td>
                         <td>{{ $pedido->valor_total }}</td>
-                        <td class="text-center alert {{ $pedido->status->color }}">{{ $pedido->status->nome }}</td>
+                        <td class="text-center {{ $pedido->status->color }}">{{ $pedido->status->nome }}</td>
                     </tr>
                 @endif
             @endforeach
         @endif
         </tbody>
+        @if($paginate)
+            <tr>
+                <td>
+                    <div class="pull-right">
+                        {!! $pedidos->render() !!}
+                    </div>
+                </td>
+            </tr>
+        @endif
     </table>
+
 @endsection

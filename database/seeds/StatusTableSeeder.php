@@ -12,10 +12,10 @@ class StatusTableSeeder extends Seeder
      */
     public function run()
     {
-        Status::create(['nome' => 'Recebido', 'color' => 'alert-primary']);
-        Status::create(['nome' => 'Pagamento Aprovado', 'color' => 'alert-success']);
-        Status::create(['nome' => 'Enviado', 'color' => 'alert-info']);
-        Status::create(['nome' => 'Entregue', 'color' => 'alert-warning']);
-        Status::create(['nome' => 'Cancelado', 'color' => 'alert-danger']);
+        Status::create(['nome' => 'Recebido', 'color' => 'bg-light-blue-active']);
+        Status::create(['nome' => 'Pagamento Aprovado', 'color' => 'bg-green-active']);
+        Status::create(['nome' => 'Enviado', 'color' => 'bg-yellow']);
+        Status::create(['nome' => 'Entregue', 'color' => 'bg-navy-active']);
+        Status::create(['nome' => 'Cancelado', 'color' => 'bg-red-active']);
     }
 }

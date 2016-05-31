@@ -15,6 +15,6 @@ class ProdutoTableSeeder extends Seeder
         DB::statement('TRUNCATE produtos');
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 
-        factory(App\Produto::class, 20)->create();
+        factory(App\Produto::class, 50)->create();
     }
 }

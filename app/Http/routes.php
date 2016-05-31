@@ -15,7 +15,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/adm/pedido', [
+Route::match(['get', 'post'], '/adm/pedido', [
     'as' => 'adm.pedido.index',
     'uses' => 'Adm\PedidoController@index'
+]);
+
+Route::get('pedidos/{cliente?}', [
+    'as' => 'site.cliente.pedidos',
+    'uses' => 'Site\ClienteController@pedidos'
+]);
+
+Route::get('produtos', [
+    'as' => 'site.produto.index',
+    'uses' => 'Site\ProdutoController@index'
+]);
+
+Route::post('carrinho', [
+    'as' => 'site.carrinho.index',
+    'uses' => 'Site\CarrinhoController@index'
 ]);

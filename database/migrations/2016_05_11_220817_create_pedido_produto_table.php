@@ -14,6 +14,7 @@ class CreatePedidoProdutoTable extends Migration
     {
         Schema::create('pedido_produto', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('cliente_id')->unsigned();
             $table->integer('pedido_id')->unsigned();
             $table->integer('produto_id')->unsigned();
             $table->string('nome_produto');
@@ -21,8 +22,9 @@ class CreatePedidoProdutoTable extends Migration
             $table->tinyInteger('qtd');
             $table->timestamps();
 
-//            $table->foreign('pedido_id')->references('id')->on('pedidos');
-//            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->foreign('pedido_id')->references('id')->on('pedidos');
+            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->foreign('produto_id')->references('id')->on('produtos');
         });
     }
 
@@ -36,6 +38,7 @@ class CreatePedidoProdutoTable extends Migration
         Schema::drop('pedido_produto', function(Blueprint $table){
             $table->dropForeign('pedido_id');
             $table->dropForeign('cliente_id');
+            $table->dropForeign('produto_id');
         });
     }
 }

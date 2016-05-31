@@ -40,4 +40,27 @@ class Pedido extends Model
     {
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d/m/Y H:i:s');
     }
+
+    public function scopeFiltro($query, $input)
+    {
+        if($input['id']) {
+            $query->where('id', $input['id']);
+        }
+
+//        if($input['cliente']) {
+//            $query->join('clientes', 'clientes.id', '=', 'pedidos.cliente_id')
+//                  ->where('clientes.nome', 'like', "%{$input['cliente']}%")
+//                  ->groupBy('pedidos.id');
+//        }
+
+        if($input['status_id']) {
+            $query->where('status_id', $input['status_id']);
+        }
+
+
+        return $query;
+    }
+
+
+
 }

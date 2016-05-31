@@ -22,7 +22,7 @@ class CreatePedidosTable extends Migration
             $table->float('valor_total');
             $table->timestamps();
 
-//            $table->foreign('cliente_id')->references('id')->on('clientes');
+            $table->foreign('cliente_id')->references('id')->on('clientes');
         });
     }
 

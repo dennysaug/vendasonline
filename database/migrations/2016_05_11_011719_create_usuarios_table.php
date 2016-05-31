@@ -23,7 +23,7 @@ class CreateUsuariosTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
-//            $table->foreign('grupo_id')->references('id')->on('grupo_usuarios');
+            $table->foreign('grupo_id')->references('id')->on('grupo_usuarios');
         });
     }
 

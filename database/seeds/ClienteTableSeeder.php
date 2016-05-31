@@ -15,6 +15,6 @@ class ClienteTableSeeder extends Seeder
         DB::statement('TRUNCATE clientes');
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
 
-        factory(App\Cliente::class, 20)->create();
+        factory(App\Cliente::class, 30)->create();
     }
 }

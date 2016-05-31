@@ -18,7 +18,7 @@ class CreateCategoriasTable extends Migration
             $table->string('nome',100);
             $table->timestamps();
 
-//            $table->foreign('segmento_id')->references('id')->on('segmentos');
+            $table->foreign('segmento_id')->references('id')->on('segmentos');
         });
     }
 
