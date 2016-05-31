@@ -34,3 +34,8 @@ Route::post('carrinho', [
     'as' => 'site.carrinho.index',
     'uses' => 'Site\CarrinhoController@index'
 ]);
+
+Route::get('login', [
+    'as' => 'site.login.index',
+    'uses' => 'Site\LoginController@index'
+]);
