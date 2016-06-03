@@ -1,6 +1,6 @@
 @extends('layout.site')
-@section('cliente', 'Dennys Augustus')
-@section('boxtitle', 'Lista de Produtos');
+{{--@section('cliente', 'Dennys Augustus')--}}
+@section('boxtitle', 'Lista de Produtos')
 @section('migalha')
         <!-- Content Header (Page header) -->
 <section class="content-header">

@@ -1,22 +1,23 @@
 @extends('layout.site')
-{{--@section('cliente', 'Dennys Augustus')--}}
+@section('cliente', $cliente['nome'])
 @section('boxtitle', 'Carrinho')
 @section('migalha')
         <!-- Content Header (Page header) -->
 <section class="content-header">
     <h1>
-        Carrinho
-        <small>finalizar compra</small>
+        Finalizar Pedido
+        <small>Total de itens: {{ $produtos->count() }}</small>
     </h1>
     <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Carrinho</li>
+        <li class="active">Pedido</li>
     </ol>
 </section>
 @stop
 
 @section('conteudo')
     @if(isset($produtos))
+        {!! Form::open(['route' => 'site.pedido.finalizar']) !!}
         <div class="col-xs-12 table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -45,14 +46,9 @@
         <div class="row">
             <!-- accepted payments column -->
             <div class="col-xs-6">
-                <p class="lead">Formas de Pagamento:</p>
-                <img alt="Visa" src="/dist/img/credit/visa.png">
-                <img alt="Mastercard" src="/dist/img/credit/mastercard.png">
-                <img alt="American Express" src="/dist/img/credit/american-express.png">
-                <img alt="Paypal" src="/dist/img/credit/paypal2.png">
-                <p style="margin-top: 10px;" class="text-muted well well-sm no-shadow">
-                    Compra realiza via cartão de crédito aprovação será mediante análise no prazo de 2 (dois) dias uteis.
-                </p>
+                <p>SELECIONE A FORMA DE PAGAMENTO</p>
+
+                {!! Form::select('pagamento_id', ['' => 'Selecione', '1' => 'À vista', '2' => 'Boleto', '3' => 'Cartão de crédito'], null, ['class' => 'form-control']) !!}
             </div><!-- /.col -->
             <div class="col-xs-6">
                 <p class="lead"></p>
@@ -80,11 +76,11 @@
         </div>
         <div class="row no-print">
             <div class="col-xs-12">
-                <a class="btn btn-default" target="_blank" href="javascript:print();"><i class="fa fa-print"></i> Imprimir</a>
-                <a href="{{ route('site.login.index') }}" class="btn btn-success pull-right"><i class="fa fa-credit-card"></i> Finalizar Pedido</a>
+                {!! Form::submit('Fechar Pedido', ['class' => 'btn btn-danger pull-right'])  !!}
             </div>
         </div>
+        {!! Form::close() !!}
     @else
-        <center><h3>Nenhum produto adicionado ao carrinho.</h3></center>
+        <center><h3>Problema na finalização do seu pedido.</h3></center>
     @endif
 @stop

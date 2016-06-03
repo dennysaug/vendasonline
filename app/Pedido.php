@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pedido extends Model
 {
-
+    protected $fillable = ['status_id', 'cliente_id', 'frete_id', 'forma_pagamento_id', 'valor_frete', 'valor_total'];
 
     public function cliente()
     {
@@ -41,6 +41,26 @@ class Pedido extends Model
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->created_at)->format('d/m/Y H:i:s');
     }
 
+    public function getFormaPagamentoIdAttribute($id)
+    {
+        switch($id) {
+            case '1':
+                $pagamento = 'À vista';
+                break;
+            case '2':
+                $pagamento = "Boleto";
+                break;
+            case '3':
+                $pagamento = 'Cartão de Cŕedito';
+                break;
+            default:
+                $pagamento = 'Boleto Báncario';
+                break;
+        }
+
+        return $pagamento;
+    }
+
     public function scopeFiltro($query, $input)
     {
         if($input['id']) {
@@ -60,6 +80,8 @@ class Pedido extends Model
 
         return $query;
     }
+
+
 
 
 

@@ -1,5 +1,5 @@
 @extends('layout.site')
-@section('cliente', 'Dennys Augustus')
+{{--@section('cliente', 'Dennys Augustus')--}}
 @section('boxtitle', 'Login')
 @section('migalha')
         <!-- Content Header (Page header) -->
@@ -18,17 +18,22 @@
 @section('conteudo')
     <div class="login-box">
         <div class="login-logo">
-            <a href="../../index2.html"><b>Vendas</b>ONLINE</a>
+            <b>Vendas</b>ONLINE
         </div><!-- /.login-logo -->
         <div class="login-box-body">
+            <i class="fa fa-fw fa-exclamation-triangle"></i>
+            @if(session()->has('msg'))
+                <div class="alert alert-warning"><i class="fa fa-fw fa-exclamation-triangle"></i>{{ session('msg') }}</div>
+            @endif
+
             <p class="login-box-msg">Entre com seu login e senha</p>
-            <form method="post" action="../../index2.html">
+            {!! Form::open() !!}
                 <div class="form-group has-feedback">
-                    <input type="text" placeholder="Email" class="form-control">
+                    {!! Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'E-mail']) !!}
                     <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
                 </div>
                 <div class="form-group has-feedback">
-                    <input type="password" placeholder="Password" class="form-control">
+                    {!! Form::password('password',['class' => 'form-control', 'placeholder' => 'Senha']) !!}
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
@@ -38,10 +43,10 @@
                         <button class="btn btn-primary btn-block btn-flat" type="submit">Entrar</button>
                     </div><!-- /.col -->
                 </div>
-            </form>
+            {!! Form::close() !!}
 
             <div class="social-auth-links text-center">
-                <p>- OR -</p>
+                <p>- OU -</p>
                 <a class="btn btn-block btn-social btn-facebook btn-flat" href="#"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
                 <a class="btn btn-block btn-social btn-google-plus btn-flat" href="#"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
             </div><!-- /.social-auth-links -->

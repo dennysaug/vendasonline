@@ -39,3 +39,18 @@ Route::get('login', [
     'as' => 'site.login.index',
     'uses' => 'Site\LoginController@index'
 ]);
+
+Route::post('login', [
+    'as' => 'site.login.index',
+    'uses' => 'Site\LoginController@login'
+]);
+
+Route::get('pedido/finalizar', [
+    'as' => 'site.pedido.finalizar',
+    'uses' => 'Site\PedidoController@finalizar'
+]);
+
+Route::post('pedido/finalizar', [
+    'as' => 'site.pedido.finalizar',
+    'uses' => 'Site\PedidoController@finalizado'
+]);

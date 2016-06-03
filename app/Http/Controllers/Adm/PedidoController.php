@@ -18,7 +18,7 @@ class PedidoController extends Controller
             $pedidos = Pedido::filtro($input)->orderBy('pedidos.created_at', 'desc')->get();
         } else {
             $paginate = true;
-            $pedidos = Pedido::paginate(50);
+            $pedidos = Pedido::orderBy('id', 'desc')->paginate(50);
         }
 
         $status = Status::all()->lists('nome', 'id')->toArray();

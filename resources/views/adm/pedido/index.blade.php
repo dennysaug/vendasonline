@@ -24,7 +24,7 @@
                         <td><strong>{{ $pedido->id }}</strong></td>
                         <td>{{ $pedido->cliente->nome }}</td>
                         <td>{{ (isset($pedido->frete_id) && $pedido->frete_id == 1) ? 'Sedex' : 'PAC' }} : {{ $pedido->valor_frete }}</td>
-                        <td>{{ (isset($pedido->forma_pagamento_id) && $pedido->forma_pagamento_id == 1) ? 'Boleto' : 'À Vista' }}</td>
+                        <td>{{ $pedido->forma_pagamento_id }}</td>
                         <td>
                             <ul>
                                 @foreach($pedido->produtos as $produto)
